@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 import time
 """
-@title: 92.125.440.562.563.564.798 背包问题
+@title: 92.125.440.562.563.564.798.799 背包问题
 @author: evestone
 """
 
@@ -146,6 +146,25 @@ def backPack7(n, prices, weight, amounts):
     return dp[n]
 
 
+'''
+组合在1 ~ n范围内的值的数量
+'''
+
+
+def backPack8(n, value, amount):
+    dp = [False] * (n + 1)
+    result = 0
+    dp[0] = True
+    for i in range(0, len(value)):
+        cnt = [0]*(n + 1)
+        for j in range(value[i], n + 1):
+            if not dp[j] and dp[j - value[i]] and cnt[j - value[i]] < amount[i]:
+                dp[j] = dp[j - value[i]]
+                result += 1
+                cnt[j] = cnt[j - value[i]] + 1
+    return result
+
+
 
 
 if __name__ == '__main__':
@@ -184,3 +203,7 @@ if __name__ == '__main__':
     A6 = [1, 2, 4]
     print(backPack6(m6, A6))
 
+    n = 5
+    value = [1,4]
+    amount = [2,1]
+    print(backPack8(n, value, amount))
