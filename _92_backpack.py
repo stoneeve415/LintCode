@@ -165,6 +165,35 @@ def backPack8(n, value, amount):
     return result
 
 
+'''
+至少一份工作的最高可能性
+'''
+
+
+def backpack9(n, prices, probability):
+    # write your code here
+    _len = len(prices)
+    dp = [0.0] * (n + 1)
+    for i in range(1, _len + 1):
+        for j in range(n, prices[i - 1] - 1, -1):
+            dp[j] = max(dp[j], 1.0 - (1.0 - dp[j - prices[i - 1]]) * (1.0 - probability[i - 1]))
+
+    return dp[n]
+
+
+'''
+最少需要给商人多少小费
+'''
+
+
+def backPack10(n):
+    # write your code here
+    dp = [0] * (n + 1)
+    prices = [150, 250, 350]
+    for i in range(1, len(prices)):
+        for j in range(prices[i - 1], n + 1):
+            dp[j] = max(dp[j], dp[j - prices[i - 1]] + prices[i - 1])
+    return n - dp[n]
 
 
 if __name__ == '__main__':
@@ -203,7 +232,23 @@ if __name__ == '__main__':
     A6 = [1, 2, 4]
     print(backPack6(m6, A6))
 
-    n = 5
-    value = [1,4]
-    amount = [2,1]
-    print(backPack8(n, value, amount))
+    n7 = 8
+    prices7 = [3, 2]
+    weight7 = [300, 160]
+    amounts7 = [1, 6]
+    print(backPack7(n7, prices7, weight7, amounts7))
+
+    n8 = 5
+    value8 = [1, 4]
+    amount8 = [2, 1]
+    print(backPack8(n8, value8, amount8))
+
+    n9 = 8
+    prices9 = [4, 4, 5]
+    probability9 = [1, 0.2, 0.3]
+    print(backpack9(n9, prices9, probability9))
+
+    n10 = 9113
+    print(backPack10(n10))
+
+
