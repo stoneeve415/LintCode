@@ -70,3 +70,5 @@ if __name__ == '__main__':
     n = 11
     primes = [2, 3, 5]
     print(nthSuperUglyNumber(n, primes))
+
+
