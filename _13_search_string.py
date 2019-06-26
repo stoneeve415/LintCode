@@ -4,39 +4,43 @@
 """
 
 
-def next_arr(target):
-    _len = len(target)
-    arr = list(target)
-    res = [0]*_len
-    if _len == 1:
-        return res
-    for i, item in enumerate(arr[1:], start=1):
-        if arr[i] == arr[res[i-1]]:
-            res[i] = res[i-1] + 1
-        else:
-            res[i] = res[i-1]
-    return res
-
-
 def kmp(source, target):
+    # Write your code here
+    def next_arr(target):
+        n = len(target)
+        prefix = [0] * n
+        i = 1
+        _len = 0
+        while i < n:
+            if target[i] == target[_len]:
+                _len += 1
+                prefix[i] = _len
+                i += 1
+            else:
+                if _len > 0:
+                    _len = prefix[_len - 1]
+                else:
+                    prefix[i] = 0
+                    i += 1
+        return prefix
+
     if target == '':
         return 0
     prefix = next_arr(target)
     prefix.insert(0, -1)
     i, j = 0, 0
-    len1, len2 = len(source), len(target)
-    while i < len1:
+    while i < len(source):
+        if j == len(target) - 1 and source[i] == target[j]:
+            return i - j
         if source[i] == target[j]:
             i += 1
             j += 1
-            if j == len2:
-                return i - j
         else:
             if j != -1:
                 j = prefix[j]
             else:
-                j += 1
                 i += 1
+                j += 1
     return -1
 
 
