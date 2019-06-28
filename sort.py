@@ -51,8 +51,8 @@ def quick(nums):
             if left < right:
                 nums[left], nums[right] = nums[right], nums[left]
                 right -= 1
-            recursive(nums, start, left)
-            recursive(nums, left+1, end)
+        recursive(nums, start, left)
+        recursive(nums, left+1, end)
     recursive(nums, 0, _len-1)
 
     return nums
