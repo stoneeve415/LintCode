@@ -5,7 +5,9 @@
 """
 import sys
 import numpy as np
-class Node():
+
+
+class Node:
     def __init__(self, p, dim=0):
         self.parents = None
         self.left = None
@@ -14,7 +16,7 @@ class Node():
         self.split_dim = dim
 
 
-class KDTree():
+class KDTree:
     def __init__(self):
         self.root = None
 
