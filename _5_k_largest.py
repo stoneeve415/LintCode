@@ -95,5 +95,5 @@ if __name__ == '__main__':
     A = [2, 5, 1, 9, 6]
     hq.heapify(A)
     print(A[0])
-    print(hp.nlargest(2, A))
-    print(hp.nsmallest(2, A))
+    print(hq.nlargest(2, A))
+    print(hq.nsmallest(2, A))
