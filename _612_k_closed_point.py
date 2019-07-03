@@ -34,6 +34,7 @@ def kClosest(points, origin, k):
         res.reverse()
         return res
 
+
 if __name__ == '__main__':
     points = [Point(4, 6), Point(4, 7), Point(4, 4), Point(2, 5), Point(1, 1)]
     origin = Point(0, 0)
