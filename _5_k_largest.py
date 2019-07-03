@@ -36,6 +36,34 @@ def kthLargestElement(n, nums):
         return -1
     return search_k(len(nums)-n+1, nums, 0, length - 1)
 
+# k小元素
+def kthSmallest(k, nums):
+    # write your code here
+    if len(nums) < 1 or len(nums) < k:
+        return -1
+    k -= 1
+
+    def recur(nums, left, right):
+        l, r = left, right
+        if l > r:
+            return -1
+        while l < r:
+            while l < r and nums[r] > nums[l]:
+                r -= 1
+            if l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+            while l < r and nums[l] <= nums[r]:
+                l += 1
+            if l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+        if l == k:
+            return nums[l]
+        elif l < k:
+            return recur(nums, l + 1, right)
+        else:
+            return recur(nums, left, l - 1)
+
+    return recur(nums, 0, len(nums) - 1)
 
 # 最小堆实现
 def kthLargestElement2(n, nums):
