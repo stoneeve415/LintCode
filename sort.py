@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+@title: 各种排序算法
+@author: evestone
+"""
 
 
 def bubble(nums):
@@ -123,7 +128,23 @@ def shell(nums):
 #     return False
 
 
+'''
+python 库
+'''
 
+
+def sort_sorted():
+    print('test python sort() function')
+    a = [(1, 7), (3, 6), (2, 9), (4, 8)]
+    a.sort(key=lambda x: x[0])
+    print(a)
+    a.sort(key=lambda x: x[1])
+    print(a)
+
+    print('test python sorted() function')
+    b = [(1, 7), (3, 6), (2, 9), (4, 8)]
+    print(sorted(b, key=lambda x: x[0]))
+    print(sorted(b, key=lambda x: x[1]))
 
 
 
@@ -135,5 +156,7 @@ if __name__ == '__main__':
     print(quick(nums.copy()))
     print(merge(nums.copy()))
     print(shell(nums.copy()))
+
+    sort_sorted()
 
 
